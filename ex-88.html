@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        button {
+            background-color: yellow;
+            color: #000000;
+            padding: 1rem;
+            border-radius: 5px;
+            border: none;
+        }
+
+        #popup {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            width: 500px;
+            box-shadow: 0px 0px 2px 2px gray;
+            position: relative;
+            transform: translateX(-300%);
+            transition: all 0.6s linear;
+        }
+
+        #popup.active {
+            transform: translateX(0%);
+        }
+
+        #popup button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            padding: 1.5rem;
+            font-size: 18px;
+            background-color: #fff;
+            color: #000000
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="open">open</button>
+
+    <div id="popup">
+        <button id="close">&times;</button>
+        <h1>youtube</h1>
+    </div>
+
+    <script>
+
+        window.onload = function() {
+            const popup = document.getElementById("popup");
+            const open = document.getElementById("open");
+            const close = document.getElementById("close");
+
+            open.addEventListener('click', function() {
+                document.body.style.backgroundColor = 'purple';
+                open.style.display = 'none';
+                popup.classList.add('active');
+            })
+
+            close.addEventListener('click', function() {
+                document.body.style.backgroundColor = '#ff';
+                popup.classList.remove('active');
+                open.style.display = 'block';
+            })
+        }
+
+    </script>
+
+</body>
+
+</html>
